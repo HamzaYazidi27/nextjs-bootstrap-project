@@ -41,38 +41,41 @@ StageManager est une application web complète pour gérer les stages entre étu
 
 ## 🔧 Installation
 
-### 1. Installer XAMPP
-Téléchargez et installez XAMPP depuis [https://www.apachefriends.org/](https://www.apachefriends.org/)
+### 🚀 Installation Automatique (Recommandée)
 
-### 2. Démarrer les services
-Lancez XAMPP Control Panel et démarrez :
-- Apache
-- MySQL
+1. **Installer XAMPP**
+   - Téléchargez depuis [https://www.apachefriends.org/](https://www.apachefriends.org/)
+   - Installez et démarrez Apache + MySQL
 
-### 3. Copier les fichiers
-Copiez le dossier `stagemanager` dans le répertoire `htdocs` de XAMPP :
-```
-C:\xampp\htdocs\stagemanager\  (Windows)
-/opt/lampp/htdocs/stagemanager/  (Linux)
-/Applications/XAMPP/htdocs/stagemanager/  (macOS)
-```
+2. **Copier les fichiers**
+   ```
+   C:\xampp\htdocs\stagemanager\  (Windows)
+   /opt/lampp/htdocs/stagemanager/  (Linux)
+   /Applications/XAMPP/htdocs/stagemanager/  (macOS)
+   ```
 
-### 4. Créer la base de données
-1. Ouvrez phpMyAdmin : [http://localhost/phpmyadmin](http://localhost/phpmyadmin)
-2. Importez le fichier `base.sql` pour créer la base de données et les tables
-3. La base de données `stagemanager_db` sera créée automatiquement
+3. **Lancer l'installation automatique**
+   - Accédez à : [http://localhost/stagemanager/install.php](http://localhost/stagemanager/install.php)
+   - Suivez les 3 étapes guidées
+   - L'installation se fait automatiquement !
 
-### 5. Configuration
-Vérifiez les paramètres de connexion dans `config/config.php` :
-```php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'stagemanager_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-```
+### 🔍 Vérification du système
+Après installation, vérifiez que tout fonctionne :
+- [http://localhost/stagemanager/check_system.php](http://localhost/stagemanager/check_system.php)
 
-### 6. Permissions
-Assurez-vous que le dossier `uploads/` est accessible en écriture pour permettre le téléchargement des CV.
+### 🛠️ Installation Manuelle (Alternative)
+
+Si vous préférez l'installation manuelle :
+
+1. **Créer la base de données**
+   - Ouvrez phpMyAdmin : [http://localhost/phpmyadmin](http://localhost/phpmyadmin)
+   - Importez le fichier `base.sql`
+
+2. **Vérifier la configuration**
+   - Fichier `config/config.php` (normalement correct par défaut)
+
+3. **Permissions**
+   - Dossier `uploads/` accessible en écriture
 
 ## 🌐 Accès à l'application
 
