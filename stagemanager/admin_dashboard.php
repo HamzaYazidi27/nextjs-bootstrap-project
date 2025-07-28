@@ -67,7 +67,8 @@ include 'includes/header.php';
             <div>
                 <div class="btn-group" role="group">
                     <a href="manage_users.php" class="btn btn-outline-primary">Gérer les utilisateurs</a>
-                    <a href="manage_offers.php" class="btn btn-outline-secondary">Gérer les offres</a>
+                    <a href="manage_offers_simple.php" class="btn btn-outline-secondary">Gérer les offres</a>
+                    <a href="debug_manage_offers.php" class="btn btn-outline-info">Debug Offres</a>
                 </div>
             </div>
         </div>
@@ -131,6 +132,42 @@ include 'includes/header.php';
                     </div>
                     <div class="align-self-center">
                         <span class="fs-1">📄</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">🚀 Actions Rapides</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="d-grid">
+                            <a href="manage_users.php" class="btn btn-outline-primary">
+                                👥 Gérer les Utilisateurs
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-grid">
+                            <a href="manage_offers_simple.php" class="btn btn-outline-secondary">
+                                📋 Gérer les Offres
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="d-grid">
+                            <a href="debug_manage_offers.php" class="btn btn-outline-info">
+                                🔍 Debug Système
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -213,12 +250,20 @@ include 'includes/header.php';
         <div class="py-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h5>Dernières offres publiées</h5>
-                <a href="manage_offers.php" class="btn btn-outline-secondary btn-sm">Voir toutes</a>
+                <a href="manage_offers_simple.php" class="btn btn-outline-secondary btn-sm">Voir toutes</a>
             </div>
             
             <?php if (empty($recentOffers)): ?>
                 <div class="text-center py-4">
                     <p class="text-muted">Aucune offre publiée</p>
+                    <div class="mt-3">
+                        <p><strong>Pour ajouter des offres de test :</strong></p>
+                        <ol class="text-start">
+                            <li>Se connecter en tant qu'entreprise : <code>contact@techcorp.com</code> / <code>admin123</code></li>
+                            <li>Aller sur "Espace Entreprise"</li>
+                            <li>Cliquer sur "Publier une nouvelle offre"</li>
+                        </ol>
+                    </div>
                 </div>
             <?php else: ?>
                 <div class="table-responsive">
@@ -238,7 +283,7 @@ include 'includes/header.php';
                                     <td><?php echo sanitize($offer['company_name']); ?></td>
                                     <td><?php echo formatDate($offer['posted_date']); ?></td>
                                     <td>
-                                        <a href="manage_offers.php?offer_id=<?php echo $offer['id']; ?>" 
+                                        <a href="manage_offers_simple.php?offer_id=<?php echo $offer['id']; ?>" 
                                            class="btn btn-outline-secondary btn-sm">
                                             Voir détails
                                         </a>
