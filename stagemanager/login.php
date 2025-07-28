@@ -1,4 +1,8 @@
 <?php
+// Activer l'affichage des erreurs pour le débogage
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once 'config/config.php';
 require_once 'includes/functions.php';
 
@@ -25,31 +29,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         setFlash('Adresse e-mail invalide.', 'error');
     } else {
         try {
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-            $stmt->execute([$email]);
-            $user = $stmt->fetch();
-            
-            if ($user && password_verify($password, $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_name'] = $user['name'];
-                $_SESSION['role'] = $user['role'];
-                
-                setFlash('Connexion réussie ! Bienvenue ' . $user['name'] . '.', 'success');
-                
-                // Redirect based on role
-                if ($user['role'] === 'student') {
-                    header('Location: student_dashboard.php');
-                } elseif ($user['role'] === 'company') {
-                    header('Location: company_dashboard.php');
-                } elseif ($user['role'] === 'admin') {
-                    header('Location: admin_dashboard.php');
-                }
-                exit();
+            // Debug: Vérifier la connexion à la base de données
+            if (!isset($pdo)) {
+                setFlash('Erreur: Connexion à la base de données non établie.', 'error');
             } else {
-                setFlash('Adresse e-mail ou mot de passe incorrect.', 'error');
+                $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
+                $stmt->execute([$email]);
+                $user = $stmt->fetch();
+                
+                // Debug: Vérifier si l'utilisateur existe
+                if (!$user) {
+                    setFlash('Utilisateur non trouvé. Email: ' . $email, 'error');
+                } else {
+                    // Debug: Vérifier le mot de passe
+                    if (password_verify($password, $user['password'])) {
+                        // Démarrer la session si pas déjà fait
+                        if (session_status() === PHP_SESSION_NONE) {
+                            session_start();
+                        }
+                        
+                        $_SESSION['user_id'] = $user['id'];
+                        $_SESSION['user_name'] = $user['name'];
+                        $_SESSION['role'] = $user['role'];
+                        
+                        setFlash('Connexion réussie ! Bienvenue ' . $user['name'] . '.', 'success');
+                        
+                        // Debug: Vérifier les variables de session
+                        error_log("Session créée - ID: " . $_SESSION['user_id'] . ", Role: " . $_SESSION['role']);
+                        
+                        // Redirect based on role
+                        if ($user['role'] === 'student') {
+                            header('Location: student_dashboard.php');
+                        } elseif ($user['role'] === 'company') {
+                            header('Location: company_dashboard.php');
+                        } elseif ($user['role'] === 'admin') {
+                            header('Location: admin_dashboard.php');
+                        }
+                        exit();
+                    } else {
+                        setFlash('Mot de passe incorrect pour: ' . $email, 'error');
+                    }
+                }
             }
         } catch (PDOException $e) {
-            setFlash('Erreur de connexion. Veuillez réessayer.', 'error');
+            setFlash('Erreur de base de données: ' . $e->getMessage(), 'error');
+        } catch (Exception $e) {
+            setFlash('Erreur générale: ' . $e->getMessage(), 'error');
         }
     }
 }
