@@ -107,27 +107,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Loading states for forms - Fixed version
+    // Loading states for forms - Removed to fix infinite loading
+    // This was causing the infinite loading issue
+    /*
     const submitButtons = document.querySelectorAll('button[type="submit"]');
     submitButtons.forEach(function(button) {
-        button.addEventListener('click', function(e) {
-            const form = this.closest('form');
-            if (form && form.checkValidity()) {
-                // Don't prevent default - let the form submit normally
-                this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Chargement...';
-                this.disabled = true;
-                
-                // Re-enable button after 5 seconds in case of error
-                setTimeout(() => {
-                    this.disabled = false;
-                    this.innerHTML = this.getAttribute('data-original-text') || 'Se connecter';
-                }, 5000);
-            }
-        });
-        
         // Store original button text
         button.setAttribute('data-original-text', button.innerHTML);
     });
+    */
 
     // Tooltip initialization
     const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
