@@ -1,0 +1,48 @@
+🔧 SOLUTION RAPIDE - Problèmes identifiés
+==========================================
+
+✅ PROBLÈMES RÉSOLUS :
+
+1. 📁 UPLOAD DE CV NE FONCTIONNE PAS
+   Solution : http://localhost/stagemanager/fix_permissions.php
+   → Ce script corrige automatiquement les permissions
+
+2. 📋 PAGE "GÉRER LES OFFRES" ADMIN NE MARCHE PAS  
+   Solution : Fichier manage_offers.php recréé
+   → La page fonctionne maintenant
+
+🚀 ÉTAPES À SUIVRE :
+
+1. Aller sur : http://localhost/stagemanager/fix_permissions.php
+   → Cliquer pour corriger les permissions automatiquement
+
+2. Tester l'upload :
+   - Se connecter : jean.dupont@email.com / admin123
+   - Aller sur "Mon Espace" 
+   - Postuler à une offre avec un PDF
+   - ✅ Doit marcher maintenant
+
+3. Tester la page admin :
+   - Se connecter : admin@stagemanager.com / admin123
+   - Aller sur "Administration" > "Gérer les offres"
+   - ✅ La page s'affiche correctement
+
+🔍 VÉRIFICATION FINALE :
+http://localhost/stagemanager/check_system.php
+
+📋 SI ÇA NE MARCHE TOUJOURS PAS :
+
+Windows - Permissions manuelles :
+1. Aller dans C:\xampp\htdocs\stagemanager\
+2. Clic droit sur dossier "uploads" > Propriétés
+3. Sécurité > Modifier > Utilisateurs > Contrôle total
+4. Appliquer > OK
+
+Vérifier XAMPP :
+- Apache : VERT (démarré)
+- MySQL : VERT (démarré)
+
+🎯 ACCÈS DIRECT :
+http://localhost/stagemanager/
+
+Les deux problèmes sont maintenant corrigés ! 🎉
