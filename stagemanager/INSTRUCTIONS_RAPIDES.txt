@@ -1,0 +1,35 @@
+🚀 STAGEMANAGER - INSTRUCTIONS RAPIDES
+=====================================
+
+✅ PROBLÈME RÉSOLU : Le chargement infini a été corrigé !
+
+📋 ÉTAPES D'INSTALLATION :
+1. Démarrer XAMPP (Apache + MySQL)
+2. Copier le dossier dans htdocs/stagemanager/
+3. Aller sur : http://localhost/stagemanager/install.php
+4. Suivre les 3 étapes automatiques
+5. C'est prêt !
+
+🔍 VÉRIFICATION :
+- http://localhost/stagemanager/check_system.php
+
+🔑 COMPTES DE TEST :
+Admin     : admin@stagemanager.com / admin123
+Entreprise: contact@techcorp.com / admin123  
+Étudiant  : jean.dupont@email.com / admin123
+
+🛠️ EN CAS DE PROBLÈME :
+- Lire GUIDE_DEPANNAGE.md
+- Utiliser test_db.php pour diagnostiquer
+- Vérifier que MySQL est démarré dans XAMPP
+
+✨ CORRECTIONS APPORTÉES :
+- JavaScript problématique supprimé
+- Affichage des erreurs activé
+- Installation automatique ajoutée
+- Outils de diagnostic créés
+
+🎯 ACCÈS DIRECT :
+http://localhost/stagemanager/
+
+Bon développement ! 🚀
